@@ -36,6 +36,9 @@ class IterativeRotationCipher
   end
 
   def decode(string)
-    # ... and here
+    index = string.index ' '
+    number = string.slice(0..index-1).to_i
+    string1 = string.slice(index..-1).lstrip
+    [number,string1]
   end
 end

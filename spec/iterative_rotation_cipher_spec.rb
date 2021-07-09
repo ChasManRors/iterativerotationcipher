@@ -39,12 +39,19 @@ describe 'iterative_rotation_cipher' do
     ]
   end
 
+  it('will return array starting with first number') {
+    decode1 = '10 If you wish to make an apple pie from scratch, you must first invent the universe.'
+    expected1 = [10, 'If you wish to make an apple pie from scratch, you must first invent the universe.']
+
+    expect(irc.decode(decode1)).to eq(expected1)
+  }
+
   xit('Encoding') {
     encode_examples.zip(decode_examples).each do |(number, string), expected|
       expect(irc.encode(number, string)).to eq(expected)
     end
   }
-  it('Decoding') do
+  xit('Decoding') do
     decode_examples.zip(encode_examples).each do |string, (_number, expected)|
       expect(irc.decode(string)).to eq(expected)
     end
