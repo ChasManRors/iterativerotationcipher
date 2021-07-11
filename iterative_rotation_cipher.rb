@@ -28,23 +28,23 @@ class IterativeRotationCipher
     string = string.split('').rotate(-number).join
 
     # ** Step 3 place the spaces back in their original positions:
-    binding.pry
-    string4 = string.dup
-    indices.each_with_object(string4) { |index, a| a.insert(index, ' ') }
+    # binding.pry
+    # string4 = string.dup
+    indices.each_with_object(string) { |index, a| a.insert(index, ' ') }
 
     # ** Step 4 shift the order of characters for each space-separated substring to the right by N:
-    string4.split(/ |\t|\r|\f/).map { |substr| substr.split('').rotate(-number).join }.join(' ')
+    string.split(/ |\t|\r|\f/).map { |substr| substr.split('').rotate(-number).join }.join(' ')
   end
 
-  def peal(string)
-    # ** Peal off the number from the string
+  def peel(string)
+    # ** Peel off the number from the string
     index = string.index ' '
     number = string.slice(0..index - 1).to_i
     [number, string.slice(index..-1).lstrip]
   end
 
   def decode(string)
-    number, string1 = peal(string)
+    number, string1 = peel(string)
     result = string1
     number.times do # |_num| # => 36
       result = sub_decode(number, result)

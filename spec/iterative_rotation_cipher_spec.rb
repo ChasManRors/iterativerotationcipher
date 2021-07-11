@@ -42,13 +42,14 @@ describe 'iterative_rotation_cipher' do
 
   it('Encoding') do
     encode_examples.zip(decode_examples).each do |(number, string), expected|
-      # binding.pry
+      puts "encode = #{number} #{string}"
       expect(irc.encode(number, string)).to eq(expected)
     end
   end
 
   it('Decoding') {
     decode_examples.zip(encode_examples).each do |str, (_number, expected)|
+      puts "decode = #{str}"
       expect(irc.decode(str)).to eq(expected)
     end
   }
